@@ -992,7 +992,6 @@ body {
     padding: 30px; /* Increased padding to accommodate brackets */
     overflow-y: auto;
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
 }
 
@@ -1098,7 +1097,6 @@ body {
     padding: 30px; /* Increased padding to accommodate brackets */
     overflow-y: auto;
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
 }
 
