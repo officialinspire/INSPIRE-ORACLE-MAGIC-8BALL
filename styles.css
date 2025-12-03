@@ -1,0 +1,1283 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   INSPIRE MAGIC 8-BALL ORACLE - STYLES
+   
+   CUSTOMIZATION GUIDE:
+   - Colors: Search for "COLOR SCHEME" section below
+   - Fonts: Change font-family values (currently using Bebas Neue + Inter)
+   - Animations: Modify keyframes at bottom of file
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── RESET & BASE ─────────────────────────────────────────────────────── */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    min-height: 100vh;
+}
+
+#inspire-8ball-oracle {
+    box-sizing: border-box;
+    font-family: 'Cinzel', 'Georgia', serif;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+#inspire-8ball-oracle *,
+#inspire-8ball-oracle *::before,
+#inspire-8ball-oracle *::after {
+    box-sizing: inherit;
+}
+
+/* ─── COLOR SCHEME (EDITABLE) ─────────────────────────────────────────── */
+
+:root {
+    --inspire-cosmic-purple: #9d4edd;
+    --inspire-neon-pink: #ff006e;
+    --inspire-electric-teal: #06ffa5;
+    --inspire-deep-space: #0d0221;
+    --inspire-dark-purple: #240046;
+    --inspire-glow-color: rgba(6, 255, 165, 0.6);
+    --inspire-text-primary: #ffffff;
+    --inspire-text-secondary: #c8b6ff;
+    
+    /* Antique shop theme */
+    --wood-dark: #2d1810;
+    --wood-medium: #5c3d2e;
+    --wood-light: #8b6f47;
+    --brass: #b8860b;
+    --velvet-purple: #6b2d5c;
+    --antique-paper: #f4e8d0;
+    --shelf-shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* ─── MAIN CONTAINER ───────────────────────────────────────────────────── */
+
+#inspire-8ball-oracle {
+    width: 100%;
+    min-height: 100vh;
+    background: #000000; /* Pure black, screens control their own backgrounds */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.inspire-8ball-container {
+    width: 100%;
+    max-width: 480px; /* Reduced for better fit */
+    background: 
+        linear-gradient(180deg, 
+            rgba(26, 15, 10, 0.95) 0%, 
+            rgba(45, 24, 16, 0.92) 50%,
+            rgba(26, 15, 10, 0.95) 100%
+        );
+    border: 3px solid var(--brass);
+    border-radius: 15px;
+    padding: 12px 14px; /* Tighter padding */
+    margin: 10px auto; /* Add margin to prevent cutoff */
+    box-shadow: 
+        0 0 30px rgba(184, 134, 11, 0.4),
+        0 10px 50px rgba(0, 0, 0, 0.9),
+        inset 0 -20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+/* Wooden shelf brackets */
+.inspire-8ball-container::before,
+.inspire-8ball-container::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--brass) 0%, #8b7500 100%);
+    clip-path: polygon(
+        0% 0%, 100% 0%, 100% 80%, 80% 100%, 20% 100%, 0% 80%
+    );
+    box-shadow: 
+        inset -2px -2px 5px rgba(0, 0, 0, 0.5),
+        2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.inspire-8ball-container::before {
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+}
+
+.inspire-8ball-container::after {
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+/* ─── HEADER ───────────────────────────────────────────────────────────── */
+
+.inspire-8ball-header {
+    text-align: center;
+    margin-bottom: 6px; /* Reduced */
+    position: relative;
+}
+
+.inspire-8ball-logo {
+    width: 120px; /* Smaller */
+    height: auto;
+    margin: 0 auto 6px; /* Tighter */
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+    animation: inspire-logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes inspire-logoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(255, 165, 0, 0.9));
+    }
+}
+
+.inspire-8ball-title {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: clamp(1.6rem, 4.5vw, 2rem); /* Smaller */
+    margin: 0;
+    color: #FFD700;
+    letter-spacing: 3px; /* Tighter */
+    text-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.9);
+    font-weight: 700;
+}
+
+.inspire-8ball-subtitle {
+    font-size: clamp(0.6rem, 1.5vw, 0.75rem); /* Smaller */
+    color: var(--antique-paper);
+    margin: 3px 0 0 0; /* Tighter */
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+/* ─── ORACLE MOOD SELECTOR ─────────────────────────────────────────────── */
+
+.inspire-8ball-mood-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.inspire-8ball-mood-label {
+    font-size: 0.8rem;
+    color: #FFD700;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.inspire-8ball-mood-select {
+    background: #f4e8d0;
+    border: 2px solid var(--brass);
+    color: #2d1810;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.inspire-8ball-mood-select option {
+    background: #f4e8d0;
+    color: #2d1810;
+    padding: 10px;
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.inspire-8ball-mood-select:hover {
+    background: #fff8e7;
+    border-color: #FFD700;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.inspire-8ball-mood-select:focus {
+    outline: none;
+    background: #fff8e7;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+/* ─── INPUT SECTION ────────────────────────────────────────────────────── */
+
+.inspire-8ball-input-section {
+    margin-bottom: 8px; /* Tighter */
+}
+
+.inspire-8ball-label {
+    display: block;
+    font-size: 0.75rem; /* Smaller */
+    color: #FFD700;
+    margin-bottom: 5px; /* Tighter */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.inspire-8ball-input {
+    width: 100%;
+    padding: 8px; /* Smaller */
+    font-size: 0.85rem; /* Smaller */
+    background: rgba(26, 15, 10, 0.8);
+    border: 2px solid var(--brass);
+    border-radius: 8px;
+    color: var(--antique-paper);
+    font-family: 'Cinzel', 'Georgia', serif;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(184, 134, 11, 0.2);
+}
+
+.inspire-8ball-input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.inspire-8ball-input::placeholder {
+    color: rgba(244, 232, 208, 0.4);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.inspire-8ball-button {
+    width: 100%;
+    padding: 10px; /* Smaller */
+    margin-top: 8px; /* Tighter */
+    font-size: 0.9rem; /* Smaller */
+    font-weight: 700;
+    font-family: 'Cinzel', 'Georgia', serif;
+    letter-spacing: 1.2px;
+    color: #1a0f0a;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    border: 3px solid #B8860B;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 
+        0 4px 15px rgba(255, 215, 0, 0.7),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.inspire-8ball-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+    border-radius: 50%;
+    transition: width 0.4s, height 0.4s;
+}
+
+.inspire-8ball-button:hover:not(:disabled)::before {
+    width: 300px;
+    height: 300px;
+}
+
+.inspire-8ball-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 25px rgba(255, 215, 0, 0.9),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    background: linear-gradient(135deg, #FFED4E 0%, #FFB700 50%, #FFED4E 100%);
+}
+
+.inspire-8ball-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.inspire-8ball-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #555;
+    border-color: #333;
+    box-shadow: none;
+}
+
+.inspire-8ball-button.inspire-asking {
+    opacity: 0.8;
+    cursor: wait;
+    animation: inspire-goldPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes inspire-goldPulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(255, 215, 0, 1);
+    }
+}
+
+.inspire-8ball-hint {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #FFD700;
+    min-height: 20px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+/* ─── 8-BALL VISUAL ────────────────────────────────────────────────────── */
+
+.inspire-8ball-visual {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Tighter */
+    margin: 8px 0; /* Tighter */
+    position: relative;
+    flex-wrap: wrap;
+}
+
+/* Magic 8-Ball - smaller, on the left */
+.inspire-8ball-sphere {
+    width: 95px; /* Smaller */
+    height: 95px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #2a2a3e, #000000);
+    box-shadow: 
+        inset -10px -10px 30px rgba(0, 0, 0, 0.9),
+        inset 10px 10px 30px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(184, 134, 11, 0.6),
+        0 15px 30px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    order: 1;
+}
+
+.inspire-8ball-sphere::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.inspire-8ball-window {
+    width: 48px; /* Smaller */
+    height: 48px;
+    background: linear-gradient(135deg, #1a0033, #0d0221);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    position: relative;
+}
+
+.inspire-8ball-answer {
+    font-family: 'Bebas Neue', 'Impact', sans-serif;
+    font-size: 1.4rem; /* Smaller */
+    color: #FFD700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Center the number perfectly */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Particle effect container */
+.inspire-8ball-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Individual particle */
+.inspire-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #FFD700;
+    border-radius: 50%;
+    opacity: 0;
+    animation: inspire-particleFloat 1.5s ease-out forwards;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
+}
+
+@keyframes inspire-particleFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* Number fade-in animation */
+.inspire-8ball-answer.inspire-number-reveal {
+    animation: inspire-numberReveal 0.8s ease-out;
+}
+
+@keyframes inspire-numberReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -80%) scale(0.5);
+    }
+    50% {
+        transform: translate(-50%, -55%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Azeban character - bigger, on the right */
+.inspire-azeban-character {
+    width: 150px; /* Smaller */
+    height: auto;
+    position: relative;
+    z-index: 3;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.7));
+    animation: inspire-azebanFloat 4s ease-in-out infinite;
+    order: 2;
+}
+
+@keyframes inspire-azebanFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Hide wooden shelf */
+.inspire-8ball-shelf {
+    display: none;
+}
+
+/* Shake Animation */
+.inspire-8ball-sphere.inspire-shaking {
+    animation: inspire-shake 0.5s ease-in-out 3;
+}
+
+/* Hide 8 during shake */
+.inspire-8ball-sphere.inspire-shaking .inspire-8ball-answer {
+    opacity: 0;
+}
+
+/* ─── ANSWER DISPLAY ───────────────────────────────────────────────────── */
+
+.inspire-8ball-answer-display {
+    min-height: 40px; /* Smaller */
+    padding: 10px; /* Tighter */
+    margin: 8px 0; /* Tighter */
+    background: 
+        linear-gradient(135deg, 
+            rgba(26, 15, 10, 0.9) 0%, 
+            rgba(45, 24, 16, 0.85) 100%
+        );
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.85rem; /* Smaller */
+    font-weight: 600;
+    color: #FFD700;
+    line-height: 1.4;
+    box-shadow: 
+        0 0 25px rgba(255, 215, 0, 0.5),
+        inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    position: relative;
+    font-family: 'Cinzel', 'Georgia', serif;
+}
+
+/* Numerology reading styling */
+.inspire-numerology-reading {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #B8860B;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Decorative corner elements */
+.inspire-8ball-answer-display::before,
+.inspire-8ball-answer-display::after {
+    content: '✦';
+    position: absolute;
+    font-size: 1.1rem;
+    color: #FFD700;
+    opacity: 0.7;
+}
+
+.inspire-8ball-answer-display::before {
+    top: 6px;
+    left: 10px;
+}
+
+.inspire-8ball-answer-display::after {
+    bottom: 6px;
+    right: 10px;
+}
+
+.inspire-8ball-answer-display.inspire-visible {
+    opacity: 1;
+}
+
+/* ─── HISTORY SECTION ──────────────────────────────────────────────────── */
+
+.inspire-8ball-history-section {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 2px solid var(--brass);
+}
+
+.inspire-8ball-history-title {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 1.1rem;
+    color: #FFD700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+}
+
+.inspire-8ball-history-list {
+    max-height: 160px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.inspire-8ball-history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.inspire-8ball-history-list::-webkit-scrollbar-track {
+    background: rgba(45, 24, 16, 0.5);
+    border-radius: 10px;
+}
+
+.inspire-8ball-history-list::-webkit-scrollbar-thumb {
+    background: var(--brass);
+    border-radius: 10px;
+}
+
+.inspire-8ball-history-empty {
+    color: var(--antique-paper);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+}
+
+.inspire-8ball-history-item {
+    background: 
+        linear-gradient(135deg, 
+            rgba(92, 61, 46, 0.4) 0%, 
+            rgba(45, 24, 16, 0.6) 100%
+        );
+    border-left: 3px solid var(--brass);
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    animation: inspire-fadeIn 0.5s ease;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.inspire-8ball-history-question {
+    font-weight: 700;
+    color: var(--inspire-electric-teal);
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
+}
+
+.inspire-8ball-history-answer {
+    color: var(--antique-paper);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* ─── FOOTER ───────────────────────────────────────────────────────────── */
+
+.inspire-8ball-footer {
+    margin-top: 12px; /* Tighter */
+    padding-top: 10px; /* Tighter */
+    border-top: 2px solid var(--brass);
+    text-align: center;
+}
+
+.inspire-8ball-footer p {
+    font-size: 0.7rem; /* Smaller */
+    color: var(--antique-paper);
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── ANIMATIONS ───────────────────────────────────────────────────────── */
+
+@keyframes inspire-shake {
+    0%, 100% { transform: rotate(0deg) translateX(0); }
+    10% { transform: rotate(-10deg) translateX(-5px); }
+    20% { transform: rotate(10deg) translateX(5px); }
+    30% { transform: rotate(-10deg) translateX(-5px); }
+    40% { transform: rotate(10deg) translateX(5px); }
+    50% { transform: rotate(-10deg) translateX(-5px); }
+    60% { transform: rotate(10deg) translateX(5px); }
+    70% { transform: rotate(-10deg) translateX(-5px); }
+    80% { transform: rotate(10deg) translateX(5px); }
+    90% { transform: rotate(-5deg) translateX(-2px); }
+}
+
+@keyframes inspire-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── RESPONSIVE: TABLET & DESKTOP ─────────────────────────────────────── */
+
+@media (min-width: 768px) {
+    .inspire-8ball-container {
+        padding: 25px 22px;
+        max-width: 620px;
+    }
+
+    .inspire-azeban-character {
+        width: 220px;
+    }
+
+    .inspire-8ball-sphere {
+        width: 130px;
+        height: 130px;
+    }
+
+    .inspire-8ball-window {
+        width: 65px;
+        height: 65px;
+    }
+
+    .inspire-8ball-answer {
+        font-size: 2rem;
+    }
+
+    .inspire-8ball-answer-display {
+        font-size: 1.15rem;
+    }
+    
+    .inspire-8ball-visual {
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #inspire-8ball-oracle {
+        padding: 30px;
+    }
+    
+    .inspire-8ball-container {
+        padding: 28px 25px;
+    }
+    
+    .inspire-8ball-container::before,
+    .inspire-8ball-container::after {
+        width: 45px;
+        height: 65px;
+    }
+    
+    .inspire-8ball-container::before {
+        left: -22px;
+    }
+    
+    .inspire-8ball-container::after {
+        right: -22px;
+    }
+    
+    .inspire-azeban-character {
+        width: 240px;
+    }
+    
+    .inspire-8ball-sphere {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .inspire-8ball-logo {
+        width: 200px;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+    #inspire-start-menu,
+    #inspire-game-screen {
+        padding: 25px 15px; /* Adjust for mobile */
+    }
+    
+    .inspire-8ball-visual {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .inspire-azeban-character {
+        width: 180px;
+        order: 1;
+    }
+    
+    .inspire-8ball-sphere {
+        width: 110px;
+        height: 110px;
+        order: 2;
+    }
+    
+    .inspire-8ball-window {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .inspire-8ball-answer {
+        font-size: 1.6rem;
+    }
+    
+    .inspire-8ball-container {
+        padding: 18px 15px;
+    }
+    
+    .inspire-8ball-logo {
+        width: 160px;
+    }
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   INSPIRE MAGIC 8-BALL ORACLE - NEW SCREEN STYLES
+   Splash Screen, Intro Video, Start Menu, History Modal
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── SCREEN MANAGEMENT ───────────────────────────────────────────────────── */
+
+.inspire-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    z-index: 1;
+}
+
+.inspire-screen.inspire-active {
+    display: flex;
+    opacity: 1;
+}
+
+.inspire-screen.inspire-fade-out {
+    opacity: 0;
+}
+
+/* ─── SPLASH SCREEN (TAP TO START) ────────────────────────────────────────── */
+
+#inspire-splash-screen {
+    background: #000000;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.inspire-splash-content {
+    text-align: center;
+    max-width: 500px;
+    padding: 40px 20px;
+}
+
+.inspire-splash-logo {
+    width: 250px;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+    animation: inspire-splashPulse 2s ease-in-out infinite;
+}
+
+@keyframes inspire-splashPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 50px rgba(255, 165, 0, 1));
+        transform: scale(1.05);
+    }
+}
+
+.inspire-splash-title {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    color: #FFD700;
+    letter-spacing: 8px;
+    margin: 0 0 15px 0;
+    text-shadow: 
+        0 0 30px rgba(255, 215, 0, 1),
+        0 4px 8px rgba(0, 0, 0, 0.9);
+    font-weight: 700;
+}
+
+.inspire-splash-subtitle {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    color: #f4e8d0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 50px 0;
+    opacity: 0.9;
+}
+
+.inspire-splash-button {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    border: 3px solid #B8860B;
+    color: #1a0f0a;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 20px 60px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 
+        0 0 40px rgba(255, 215, 0, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    animation: inspire-tapPulse 2s ease-in-out infinite;
+}
+
+@keyframes inspire-tapPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 40px rgba(255, 215, 0, 0.8),
+            inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 0 60px rgba(255, 215, 0, 1),
+            inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.inspire-splash-button:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 60px rgba(255, 215, 0, 1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.inspire-splash-button:active {
+    transform: scale(0.98);
+}
+
+/* ─── INTRO VIDEO SCREEN ──────────────────────────────────────────────────── */
+
+#inspire-intro-screen {
+    background: #000000; /* Keep black background */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.inspire-intro-video {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease; /* Fade in video */
+}
+
+.inspire-intro-video.inspire-playing {
+    opacity: 1; /* Fade in when playing */
+}
+
+/* ─── START MENU SCREEN ────────────────────────────────────────────────────── */
+
+#inspire-start-menu {
+    background: #000000; /* Start with black */
+    justify-content: center;
+    align-items: center;
+    padding: 30px; /* Increased padding to accommodate brackets */
+    overflow-y: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background image layer - controlled separately */
+#inspire-start-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('background.png') center center / cover no-repeat;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    z-index: 0;
+}
+
+#inspire-start-menu.inspire-loaded::after {
+    opacity: 1; /* Fade in background */
+}
+
+#inspire-start-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#inspire-start-menu .inspire-8ball-container {
+    position: relative;
+    z-index: 1;
+}
+
+.inspire-start-character {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0; /* Tighter */
+}
+
+.inspire-start-character .inspire-azeban-character {
+    width: 160px; /* Smaller */
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
+    animation: inspire-azebanFloat 4s ease-in-out infinite;
+}
+
+.inspire-menu-section {
+    margin: 20px 0; /* Tighter */
+    text-align: center;
+}
+
+.inspire-menu-label {
+    display: block;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 1rem;
+    color: #FFD700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.inspire-menu-button {
+    margin-top: 15px !important; /* Tighter */
+}
+
+.inspire-menu-history-btn {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #B8860B;
+    color: #FFD700;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.8rem; /* Smaller */
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 10px; /* Smaller */
+    margin-top: 12px; /* Tighter */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.inspire-menu-history-btn:hover {
+    background: rgba(184, 134, 11, 0.2);
+    border-color: #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* ─── GAME SCREEN ──────────────────────────────────────────────────────────── */
+
+#inspire-game-screen {
+    background: #000000; /* Start with black */
+    justify-content: center;
+    align-items: center;
+    padding: 30px; /* Increased padding to accommodate brackets */
+    overflow-y: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background image layer */
+#inspire-game-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('background.png') center center / cover no-repeat;
+    opacity: 1; /* Always visible in game */
+    z-index: 0;
+}
+
+#inspire-game-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#inspire-game-screen .inspire-8ball-container {
+    position: relative;
+    z-index: 1;
+}
+
+.inspire-back-btn {
+    background: transparent;
+    border: none;
+    color: #FFD700;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.inspire-back-btn:hover {
+    color: #FFA500;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.inspire-game-header {
+    margin-bottom: 15px;
+}
+
+.inspire-game-history-btn {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #B8860B;
+    color: #FFD700;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.inspire-game-history-btn:hover {
+    background: rgba(184, 134, 11, 0.2);
+    border-color: #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* ─── HISTORY MODAL ────────────────────────────────────────────────────────── */
+
+.inspire-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.inspire-modal.inspire-show {
+    display: flex;
+    opacity: 1;
+}
+
+.inspire-modal-content {
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d4b8 100%);
+    border: 3px solid #B8860B;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 
+        0 0 40px rgba(184, 134, 11, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.inspire-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #B8860B;
+}
+
+.inspire-modal-title {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 1.5rem;
+    color: #2d1810;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.inspire-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: #B8860B;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.inspire-modal-close:hover {
+    color: #8b6f47;
+    transform: rotate(90deg);
+}
+
+.inspire-history-list {
+    padding: 20px 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.inspire-history-item {
+    background: rgba(255, 255, 255, 0.6);
+    border-left: 4px solid #B8860B;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inspire-history-timestamp {
+    font-size: 0.75rem;
+    color: #8b6f47;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inspire-history-question {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 700;
+    color: #2d1810;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.inspire-history-answer {
+    color: #5c3d2e;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.inspire-history-empty {
+    text-align: center;
+    color: #8b6f47;
+    font-style: italic;
+    padding: 40px 20px;
+    font-size: 1rem;
+}
+
+/* ─── AUDIO FADE-IN ───────────────────────────────────────────────────────── */
+
+.inspire-audio-fading {
+    transition: volume 2s ease;
+}
+

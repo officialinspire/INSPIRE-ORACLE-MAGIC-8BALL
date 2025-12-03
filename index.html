@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSPIRE Magic 8-Ball Oracle</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="inspire-8ball-oracle">
+    
+    <!-- Background Music -->
+    <audio id="inspire-background-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 1: TAP TO START -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="inspire-splash-screen" class="inspire-screen inspire-active">
+        <div class="inspire-splash-content">
+            <img src="logo.png" alt="INSPIRE" class="inspire-splash-logo">
+            <h1 class="inspire-splash-title">ORACLE</h1>
+            <p class="inspire-splash-subtitle">Ask the Cosmic Streetwise Mystic</p>
+            <button id="inspire-start-button" class="inspire-splash-button">
+                <span class="inspire-tap-text">TAP TO START</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 2: INTRO VIDEO -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="inspire-intro-screen" class="inspire-screen">
+        <video id="inspire-intro-video" class="inspire-intro-video" playsinline>
+            <source src="inspiresoftwareintro.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 3: START MENU -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="inspire-start-menu" class="inspire-screen">
+        <div class="inspire-8ball-container">
+            <header class="inspire-8ball-header">
+                <img src="logo.png" alt="INSPIRE" class="inspire-8ball-logo">
+                <h1 class="inspire-8ball-title">ORACLE</h1>
+                <p class="inspire-8ball-subtitle">ASK THE COSMIC STREETWISE MYSTIC</p>
+            </header>
+            
+            <!-- Azeban Welcome -->
+            <div class="inspire-start-character">
+                <img src="inspire-oracle-azeban.png" alt="Azeban the Oracle" class="inspire-azeban-character">
+            </div>
+            
+            <!-- Mood Selector -->
+            <div class="inspire-menu-section">
+                <label for="inspire-menu-mood" class="inspire-menu-label">Choose Oracle Mood:</label>
+                <select id="inspire-menu-mood" class="inspire-8ball-mood-select">
+                    <option value="balanced">Softly Honest</option>
+                    <option value="brutal">Brutal Truth</option>
+                    <option value="mystic">Mystic & Vague</option>
+                </select>
+            </div>
+            
+            <!-- Start Button -->
+            <button id="inspire-menu-start-button" class="inspire-8ball-button inspire-menu-button">
+                BEGIN YOUR READING
+            </button>
+            
+            <!-- History Button -->
+            <button id="inspire-menu-history-button" class="inspire-menu-history-btn">
+                VIEW PREVIOUS READINGS
+            </button>
+        </div>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 4: ORACLE GAME -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="inspire-game-screen" class="inspire-screen">
+        <div class="inspire-8ball-container">
+            
+            <!-- Back Button -->
+            <button id="inspire-back-button" class="inspire-back-btn">← Back to Menu</button>
+            
+            <!-- Header -->
+            <header class="inspire-8ball-header inspire-game-header">
+                <h1 class="inspire-8ball-title">ORACLE</h1>
+            </header>
+
+            <!-- Question Input Section -->
+            <div class="inspire-8ball-input-section">
+                <label for="inspire-question-input" class="inspire-8ball-label">
+                    What do you seek to know?
+                </label>
+                <input 
+                    type="text" 
+                    id="inspire-question-input" 
+                    class="inspire-8ball-input"
+                    placeholder="Type your question here..."
+                    aria-label="Your question for the oracle"
+                    maxlength="200"
+                />
+                <button 
+                    id="inspire-ask-button" 
+                    class="inspire-8ball-button"
+                    disabled
+                >
+                    ASK THE ORACLE
+                </button>
+                <p id="inspire-input-hint" class="inspire-8ball-hint" role="alert"></p>
+            </div>
+
+            <!-- 8-Ball Visual -->
+            <div id="inspire-8ball-visual" class="inspire-8ball-visual" aria-live="polite">
+                <!-- Azeban the Oracle Host -->
+                <img src="inspire-oracle-azeban.png" alt="Azeban the Oracle" class="inspire-azeban-character">
+                
+                <!-- The Magic 8-Ball -->
+                <div class="inspire-8ball-sphere">
+                    <div class="inspire-8ball-window">
+                        <div class="inspire-8ball-particles"></div>
+                        <div id="inspire-8ball-answer" class="inspire-8ball-answer">
+                            8
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Display -->
+            <div id="inspire-answer-display" class="inspire-8ball-answer-display" aria-live="polite">
+                <!-- Answer will appear here -->
+            </div>
+
+            <!-- History Button -->
+            <button id="inspire-game-history-button" class="inspire-game-history-btn">
+                View Previous Readings
+            </button>
+
+            <!-- Disclaimer -->
+            <footer class="inspire-8ball-footer">
+                <p>⚡ This is an art project, not professional advice. Use your own judgment, soldier. #teamINSPIRE</p>
+            </footer>
+
+        </div>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- HISTORY MODAL -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div id="inspire-history-modal" class="inspire-modal">
+        <div class="inspire-modal-content">
+            <div class="inspire-modal-header">
+                <h2 class="inspire-modal-title">Previous Readings</h2>
+                <button id="inspire-close-history" class="inspire-modal-close">×</button>
+            </div>
+            <div id="inspire-history-list" class="inspire-history-list">
+                <p class="inspire-history-empty">Your cosmic journey begins here...</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
