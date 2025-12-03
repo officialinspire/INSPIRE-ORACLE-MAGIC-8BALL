@@ -143,10 +143,10 @@ body {
 
 .inspire-8ball-title {
     font-family: 'Cinzel', 'Georgia', serif;
-    font-size: clamp(1.6rem, 4.5vw, 2rem); /* Smaller */
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* INCREASED from 1.6rem-2rem */
     margin: 0;
     color: #FFD700;
-    letter-spacing: 3px; /* Tighter */
+    letter-spacing: 4px; /* INCREASED from 3px */
     text-shadow: 
         0 0 20px rgba(255, 215, 0, 0.8),
         0 2px 4px rgba(0, 0, 0, 0.9);
@@ -154,11 +154,11 @@ body {
 }
 
 .inspire-8ball-subtitle {
-    font-size: clamp(0.6rem, 1.5vw, 0.75rem); /* Smaller */
+    font-size: clamp(0.75rem, 2vw, 0.95rem); /* INCREASED from 0.6rem-0.75rem */
     color: var(--antique-paper);
-    margin: 3px 0 0 0; /* Tighter */
+    margin: 5px 0 0 0; /* INCREASED from 3px */
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.5px; /* INCREASED from 1.2px */
     font-weight: 400;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     font-family: 'Cinzel', 'Georgia', serif;
@@ -188,9 +188,9 @@ body {
     background: #f4e8d0;
     border: 2px solid var(--brass);
     color: #2d1810;
-    padding: 6px 12px;
+    padding: 10px 16px; /* INCREASED from 6px 12px */
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.95rem; /* INCREASED from 0.8rem */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -198,6 +198,9 @@ body {
         inset 0 2px 4px rgba(0, 0, 0, 0.1),
         0 2px 8px rgba(0, 0, 0, 0.3);
     font-family: 'Cinzel', 'Georgia', serif;
+    margin: 0 auto; /* FIXED: Center the dropdown */
+    display: inline-block; /* FIXED: Allow centering to work */
+    min-width: 200px; /* NEW: Minimum width for better readability */
 }
 
 .inspire-8ball-mood-select option {
@@ -651,6 +654,29 @@ body {
     line-height: 1.4;
 }
 
+/* ─── ANSWER SECTION TITLES ────────────────────────────────────────────── */
+
+.inspire-answer-section,
+.inspire-numerology-section {
+    margin-bottom: 20px;
+}
+
+.inspire-section-title {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 10px 0;
+    text-align: center;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 8px;
+}
+
 /* ─── FOOTER ───────────────────────────────────────────────────────────── */
 
 .inspire-8ball-footer {
@@ -1012,7 +1038,7 @@ body {
 }
 
 .inspire-start-character .inspire-azeban-character {
-    width: 160px; /* Smaller */
+    width: 200px; /* INCREASED from 160px */
     height: auto;
     filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
     animation: inspire-azebanFloat 4s ease-in-out infinite;
