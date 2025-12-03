@@ -49,6 +49,8 @@ body {
     --velvet-purple: #6b2d5c;
     --antique-paper: #f4e8d0;
     --shelf-shadow: rgba(0, 0, 0, 0.6);
+
+    --inspire-screen-padding: clamp(12px, 2.5vw, 24px);
 }
 
 /* ─── MAIN CONTAINER ───────────────────────────────────────────────────── */
@@ -57,7 +59,7 @@ body {
     width: 100%;
     min-height: 100vh;
     background: #000000; /* Pure black, screens control their own backgrounds */
-    padding: 0;
+    padding: var(--inspire-screen-padding);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,10 +69,10 @@ body {
 
 .inspire-8ball-container {
     width: 100%;
-    max-width: 480px; /* Reduced for better fit */
-    background: 
-        linear-gradient(180deg, 
-            rgba(26, 15, 10, 0.95) 0%, 
+    max-width: min(620px, 96vw); /* Reduced for better fit and to prevent clipping */
+    background:
+        linear-gradient(180deg,
+            rgba(26, 15, 10, 0.95) 0%,
             rgba(45, 24, 16, 0.92) 50%,
             rgba(26, 15, 10, 0.95) 100%
         );
@@ -78,13 +80,14 @@ body {
     border-radius: 15px;
     padding: 12px 14px; /* Tighter padding */
     margin: 10px auto; /* Add margin to prevent cutoff */
-    box-shadow: 
+    box-shadow:
         0 0 30px rgba(184, 134, 11, 0.4),
         0 10px 50px rgba(0, 0, 0, 0.9),
         inset 0 -20px 40px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 1;
     backdrop-filter: blur(2px);
+    max-height: calc(100vh - (var(--inspire-screen-padding) * 2));
 }
 
 /* Wooden shelf brackets */
@@ -989,8 +992,8 @@ body {
     background: #000000; /* Start with black */
     justify-content: center;
     align-items: center;
-    padding: 30px; /* Increased padding to accommodate brackets */
-    overflow-y: auto;
+    padding: var(--inspire-screen-padding);
+    overflow: hidden;
     min-height: 100vh;
     flex-direction: column;
 }
@@ -1094,8 +1097,8 @@ body {
     background: #000000; /* Start with black */
     justify-content: center;
     align-items: center;
-    padding: 30px; /* Increased padding to accommodate brackets */
-    overflow-y: auto;
+    padding: var(--inspire-screen-padding);
+    overflow: hidden;
     min-height: 100vh;
     flex-direction: column;
 }
@@ -1152,6 +1155,82 @@ body {
 
 .inspire-game-header {
     margin-bottom: 15px;
+}
+
+.inspire-action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 12px auto 6px;
+}
+
+.inspire-action-btn {
+    flex: 1 1 180px;
+    max-width: 240px;
+    padding: 12px 16px;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 12px;
+    border: 2px solid var(--brass);
+    color: #1a0f0a;
+    background: linear-gradient(135deg, #ffd700 0%, #b8860b 45%, #ffd700 100%);
+    box-shadow:
+        0 6px 18px rgba(184, 134, 11, 0.55),
+        inset 0 2px 4px rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.inspire-action-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.inspire-action-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ffe873 0%, #d9a30f 55%, #ffe873 100%);
+    box-shadow:
+        0 10px 22px rgba(184, 134, 11, 0.7),
+        inset 0 2px 4px rgba(255, 255, 255, 0.45);
+}
+
+.inspire-action-btn:hover::before {
+    opacity: 1;
+}
+
+.inspire-new-reading-btn {
+    background: linear-gradient(135deg, #ffecd2 0%, #ffb347 45%, #ffd700 100%);
+    color: #2d1810;
+    box-shadow:
+        0 8px 20px rgba(255, 179, 71, 0.55),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.inspire-new-reading-btn:hover {
+    background: linear-gradient(135deg, #fff3d9 0%, #ffc76b 50%, #ffe25d 100%);
+    box-shadow:
+        0 10px 22px rgba(255, 179, 71, 0.7),
+        inset 0 2px 4px rgba(255, 255, 255, 0.45);
+}
+
+.inspire-menu-btn {
+    background: linear-gradient(135deg, #d7c3a3 0%, #b8860b 45%, #e8d4b8 100%);
+    color: #2d1810;
+}
+
+.inspire-menu-btn:hover {
+    background: linear-gradient(135deg, #eddcc2 0%, #d9a30f 50%, #f6ead2 100%);
 }
 
 .inspire-game-history-btn {
