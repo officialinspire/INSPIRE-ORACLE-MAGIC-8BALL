@@ -337,11 +337,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!historyModal) return;
         displayHistory();
         historyModal.classList.add('inspire-visible');
+        historyModal.setAttribute('aria-hidden', 'false');
     }
 
     function hideHistoryModal() {
         if (!historyModal) return;
         historyModal.classList.remove('inspire-visible');
+        historyModal.setAttribute('aria-hidden', 'true');
     }
 
     // ═══════════════════════════════════════════════════════════════
