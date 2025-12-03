@@ -64,7 +64,8 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden; /* Prevent scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .inspire-8ball-container {
@@ -87,7 +88,8 @@ body {
     position: relative;
     z-index: 1;
     backdrop-filter: blur(2px);
-    max-height: calc(100vh - (var(--inspire-screen-padding) * 2));
+    max-height: none;
+    overflow: visible;
 }
 
 /* Wooden shelf brackets */
@@ -993,7 +995,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: var(--inspire-screen-padding);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     min-height: 100vh;
     flex-direction: column;
 }
@@ -1098,7 +1101,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: var(--inspire-screen-padding);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     min-height: 100vh;
     flex-direction: column;
 }
@@ -1274,7 +1278,7 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.inspire-modal.inspire-show {
+.inspire-modal.inspire-visible {
     display: flex;
     opacity: 1;
 }
